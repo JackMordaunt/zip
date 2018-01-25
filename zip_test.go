@@ -9,6 +9,10 @@ import (
 	fb "github.com/jackmordaunt/filebuilder"
 )
 
+// TestZip tests that Create(..) and Extract(..) mirror each other.
+// 	Extract(Create(source)) == source
+// File permisions are not tested.
+// File contents are not tested.
 func TestZip(t *testing.T) {
 	tests := []struct {
 		desc    string
