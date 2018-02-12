@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/afero"
 )
 
-func write(wr io.Writer, source string) error {
+func create(wr io.Writer, source string) error {
 	info, err := fs.Stat(source)
 	if err != nil {
 		return errors.Wrap(err, "could not open source directory")

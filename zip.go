@@ -15,7 +15,7 @@ func Create(archive, source string) error {
 		return errors.Wrapf(err, "creating archive: %v", archive)
 	}
 	defer wr.Close()
-	if err := write(wr, source); err != nil {
+	if err := create(wr, source); err != nil {
 		return errors.Wrap(err, "writing archive")
 	}
 	return nil
@@ -45,7 +45,7 @@ func Extract(archive, dest string) error {
 		return errors.Wrap(err, "creating zip reader")
 	}
 	for _, file := range zr.File {
-		if err := read(file, filepath.Join(dest, file.Name)); err != nil {
+		if err := extract(file, filepath.Join(dest, file.Name)); err != nil {
 			return errors.Wrap(err, "unzipping file")
 		}
 	}

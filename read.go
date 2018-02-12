@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-func read(file *zip.File, dest string) error {
+func extract(file *zip.File, dest string) error {
 	if file.FileInfo().IsDir() {
 		path := filepath.Join(dest, file.Name)
 		return fs.MkdirAll(path, file.FileInfo().Mode())
